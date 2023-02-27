@@ -177,25 +177,28 @@ class Login extends StatelessWidget {
                         contentPadding: EdgeInsets.all(0),
                       ),
                     ),
-                    MaterialButton(
-                      onPressed: () {},
-                      color: Color(0xff3a57e8),
-                      elevation: 0,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(16.0),
-                      ),
-                      padding: EdgeInsets.all(16),
-                      child: Text(
-                        "Login",
-                        style: TextStyle(
-                          fontSize: 16,
-                          fontWeight: FontWeight.w700,
-                          fontStyle: FontStyle.normal,
+                    Padding(
+                      padding: EdgeInsets.fromLTRB(0, 30, 0, 0),
+                      child: MaterialButton(
+                        onPressed: () {},
+                        color: Color(0xff3a57e8),
+                        elevation: 0,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(16.0),
                         ),
+                        padding: EdgeInsets.all(16),
+                        child: Text(
+                          "Login",
+                          style: TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.w700,
+                            fontStyle: FontStyle.normal,
+                          ),
+                        ),
+                        textColor: Color(0xffffffff),
+                        height: 40,
+                        minWidth: MediaQuery.of(context).size.width,
                       ),
-                      textColor: Color(0xffffffff),
-                      height: 40,
-                      minWidth: MediaQuery.of(context).size.width,
                     ),
                   ],
                 ),
