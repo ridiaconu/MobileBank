@@ -5,6 +5,11 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Color(0xffffffff),
+      bottomNavigationBar: BottomNavigationBar(items: [
+        BottomNavigationBarItem(icon: Icon(Icons.home_filled), label: 'Home'),
+        BottomNavigationBarItem(
+            icon: Icon(Icons.account_circle_rounded), label: 'Account'),
+      ]),
       appBar: AppBar(
         elevation: 4,
         centerTitle: false,
@@ -59,147 +64,154 @@ class HomeScreen extends StatelessWidget {
               Container(
                 margin: EdgeInsets.all(0),
                 padding: EdgeInsets.all(0),
-                width: 200,
+                width: 220,
                 height: 100,
                 decoration: BoxDecoration(
                   color: Color(0x00ffffff),
                   shape: BoxShape.rectangle,
                   borderRadius: BorderRadius.zero,
                 ),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  mainAxisSize: MainAxisSize.max,
-                  children: [
-                    Text(
-                      "Your balance is 500 USD",
-                      textAlign: TextAlign.start,
-                      overflow: TextOverflow.clip,
-                      style: TextStyle(
-                        fontWeight: FontWeight.w600,
-                        fontStyle: FontStyle.normal,
-                        fontSize: 20,
-                        color: Color(0xff000000),
+                child: Flexible(
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    mainAxisSize: MainAxisSize.max,
+                    children: [
+                      Text(
+                        "Your balance is 500 USD",
+                        textAlign: TextAlign.start,
+                        overflow: TextOverflow.clip,
+                        style: TextStyle(
+                          fontWeight: FontWeight.w600,
+                          fontStyle: FontStyle.normal,
+                          fontSize: 20,
+                          color: Color(0xff000000),
+                        ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
               ),
             ],
           ),
-          Expanded(
-            flex: 1,
-            child: GridView(
-              padding: EdgeInsets.zero,
-              shrinkWrap: false,
-              scrollDirection: Axis.vertical,
-              physics: ScrollPhysics(),
-              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: 2,
-                crossAxisSpacing: 8,
-                mainAxisSpacing: 8,
-                childAspectRatio: 1.2,
+          Flexible(
+            child: ConstrainedBox(
+              constraints: BoxConstraints(
+                maxHeight: 300,
+                maxWidth: MediaQuery.of(context).size.width,
               ),
-              children: [
-                Column(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  mainAxisSize: MainAxisSize.max,
-                  children: [
-                    IconButton(
-                      icon: Icon(Icons.article),
-                      onPressed: () {},
-                      color: Color(0xff212435),
-                      iconSize: 60,
-                    ),
-                    Text(
-                      "See Transactions",
-                      textAlign: TextAlign.start,
-                      overflow: TextOverflow.clip,
-                      style: TextStyle(
-                        fontWeight: FontWeight.w600,
-                        fontStyle: FontStyle.normal,
-                        fontSize: 14,
-                        color: Color(0xff000000),
-                      ),
-                    ),
-                  ],
+              child: GridView(
+                padding: EdgeInsets.zero,
+                shrinkWrap: false,
+                scrollDirection: Axis.vertical,
+                physics: ScrollPhysics(),
+                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 2,
+                  crossAxisSpacing: 8,
+                  mainAxisSpacing: 8,
+                  childAspectRatio: 1.2,
                 ),
-                Column(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  mainAxisSize: MainAxisSize.max,
-                  children: [
-                    IconButton(
-                      icon: Icon(Icons.favorite),
-                      onPressed: () {},
-                      color: Color(0xff212435),
-                      iconSize: 60,
-                    ),
-                    Text(
-                      "Make a Transaction",
-                      textAlign: TextAlign.start,
-                      overflow: TextOverflow.clip,
-                      style: TextStyle(
-                        fontWeight: FontWeight.w600,
-                        fontStyle: FontStyle.normal,
-                        fontSize: 14,
-                        color: Color(0xff000000),
+                children: [
+                  Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    mainAxisSize: MainAxisSize.max,
+                    children: [
+                      IconButton(
+                        icon: Icon(Icons.article),
+                        onPressed: () {},
+                        color: Color(0xff212435),
+                        iconSize: 60,
                       ),
-                    ),
-                  ],
-                ),
-                Column(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  mainAxisSize: MainAxisSize.max,
-                  children: [
-                    IconButton(
-                      icon: Icon(Icons.attach_money),
-                      onPressed: () {},
-                      color: Color(0xff212435),
-                      iconSize: 60,
-                    ),
-                    Text(
-                      "Pay Bills",
-                      textAlign: TextAlign.start,
-                      overflow: TextOverflow.clip,
-                      style: TextStyle(
-                        fontWeight: FontWeight.w600,
-                        fontStyle: FontStyle.normal,
-                        fontSize: 14,
-                        color: Color(0xff000000),
+                      Text(
+                        "See transactions",
+                        textAlign: TextAlign.start,
+                        overflow: TextOverflow.clip,
+                        style: TextStyle(
+                          fontWeight: FontWeight.w600,
+                          fontStyle: FontStyle.normal,
+                          fontSize: 14,
+                          color: Color(0xff000000),
+                        ),
                       ),
-                    ),
-                  ],
-                ),
-                Column(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  mainAxisSize: MainAxisSize.max,
-                  children: [
-                    IconButton(
-                      icon: Icon(Icons.person),
-                      onPressed: () {},
-                      color: Color(0xff212435),
-                      iconSize: 60,
-                    ),
-                    Text(
-                      "Account information",
-                      textAlign: TextAlign.start,
-                      overflow: TextOverflow.clip,
-                      style: TextStyle(
-                        fontWeight: FontWeight.w600,
-                        fontStyle: FontStyle.normal,
-                        fontSize: 14,
-                        color: Color(0xff000000),
+                    ],
+                  ),
+                  Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    mainAxisSize: MainAxisSize.max,
+                    children: [
+                      IconButton(
+                        icon: Icon(Icons.favorite),
+                        onPressed: () {},
+                        color: Color(0xff212435),
+                        iconSize: 60,
                       ),
-                    ),
-                  ],
-                ),
-              ],
+                      Text(
+                        "Make a transaction",
+                        textAlign: TextAlign.start,
+                        overflow: TextOverflow.clip,
+                        style: TextStyle(
+                          fontWeight: FontWeight.w600,
+                          fontStyle: FontStyle.normal,
+                          fontSize: 14,
+                          color: Color(0xff000000),
+                        ),
+                      ),
+                    ],
+                  ),
+                  Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    mainAxisSize: MainAxisSize.max,
+                    children: [
+                      IconButton(
+                        icon: Icon(Icons.attach_money),
+                        onPressed: () {},
+                        color: Color(0xff212435),
+                        iconSize: 60,
+                      ),
+                      Text(
+                        "Pay Bills",
+                        textAlign: TextAlign.start,
+                        overflow: TextOverflow.clip,
+                        style: TextStyle(
+                          fontWeight: FontWeight.w600,
+                          fontStyle: FontStyle.normal,
+                          fontSize: 14,
+                          color: Color(0xff000000),
+                        ),
+                      ),
+                    ],
+                  ),
+                  Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    mainAxisSize: MainAxisSize.max,
+                    children: [
+                      IconButton(
+                        icon: Icon(Icons.person),
+                        onPressed: () {},
+                        color: Color(0xff212435),
+                        iconSize: 60,
+                      ),
+                      Text(
+                        "Account Information",
+                        textAlign: TextAlign.start,
+                        overflow: TextOverflow.clip,
+                        style: TextStyle(
+                          fontWeight: FontWeight.w600,
+                          fontStyle: FontStyle.normal,
+                          fontSize: 14,
+                          color: Color(0xff000000),
+                        ),
+                      ),
+                    ],
+                  ),
+                ],
+              ),
             ),
-          ),
+          )
         ],
       ),
     );
