@@ -111,7 +111,9 @@ class Login extends StatelessWidget {
                     ),
                     TextField(
                       controller: TextEditingController(),
-                      obscureText: false,
+                      obscureText: true,
+                      enableSuggestions: false,
+                      autocorrect: false,
                       textAlign: TextAlign.start,
                       maxLines: 1,
                       style: TextStyle(
