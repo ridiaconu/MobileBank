@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "413422330042",
+    "firebase_url": "https://mobilebank-d515f-default-rtdb.europe-west1.firebasedatabase.app",
+    "project_id": "mobilebank-d515f",
+    "storage_bucket": "mobilebank-d515f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:413422330042:android:bf50eb4e328f367d642283",
+        "android_client_info": {
+          "package_name": "com.example.bankapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "413422330042-7ebkru7fd1de92ggjeiev6cuccnquek6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAcFm7jmbnj15UYbJS8WOmy6uuLY5FkcPk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "413422330042-7ebkru7fd1de92ggjeiev6cuccnquek6.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "413422330042-qh0jqrtgkjq6ukvntasvirkg2fslsptc.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.bankapp"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

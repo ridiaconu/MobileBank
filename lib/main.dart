@@ -1,8 +1,14 @@
 import 'package:bankapp/screens/HomeScreen.dart';
 import 'package:bankapp/screens/Login.dart';
 import 'package:flutter/material.dart';
+import 'package:firebase_core/firebase_core.dart';
 
-void main() {
+import 'firebase_options.dart';
+
+void main() async {
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
   runApp(const MyApp());
 }
 
