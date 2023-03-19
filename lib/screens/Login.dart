@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
 import 'HomeScreen.dart';
+import 'package:firebase_database/firebase_database.dart';
+
+FirebaseDatabase database = FirebaseDatabase.instance;
+DatabaseReference ref = database.ref();
 
 class Login extends StatelessWidget {
   @override

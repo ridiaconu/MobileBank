@@ -1,4 +1,10 @@
+import 'package:firebase_database/ui/firebase_animated_list.dart';
+import 'package:firebase_database/ui/firebase_list.dart';
 import 'package:flutter/material.dart';
+import 'package:firebase_database/firebase_database.dart';
+
+FirebaseDatabase database = FirebaseDatabase.instance;
+DatabaseReference ref = database.ref('accoutns/accid1');
 
 class HomeScreen extends StatelessWidget {
   @override
@@ -27,11 +33,6 @@ class HomeScreen extends StatelessWidget {
             color: Color(0xff000000),
           ),
         ),
-        leading: Icon(
-          Icons.arrow_back,
-          color: Color(0xff212435),
-          size: 24,
-        ),
       ),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.start,
@@ -44,7 +45,7 @@ class HomeScreen extends StatelessWidget {
             mainAxisSize: MainAxisSize.max,
             children: [
               Text(
-                "Hello John!",
+                "Hello ",
                 textAlign: TextAlign.start,
                 overflow: TextOverflow.clip,
                 style: TextStyle(
