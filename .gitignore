@@ -25,3 +25,16 @@ doc/api/
 
 .flutter-plugins
 .flutter-plugins-dependencies
+.idea/
+android/
+ios/
+linux/
+macos/
+test/
+web/
+windows/
+.metadata
+analysis_options.yaml
+bankapp.iml
+pubspec.yaml
+
