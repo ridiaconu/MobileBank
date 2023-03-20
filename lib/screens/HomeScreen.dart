@@ -2,6 +2,10 @@ import 'package:firebase_database/ui/firebase_animated_list.dart';
 import 'package:firebase_database/ui/firebase_list.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_database/firebase_database.dart';
+import 'AccountInfo.dart';
+import 'PayBills.dart';
+import 'TransactionList.dart';
+import 'TransactionMake.dart';
 
 FirebaseDatabase database = FirebaseDatabase.instance;
 DatabaseReference ref = database.ref('accoutns/accid1');
@@ -63,7 +67,29 @@ class HomeScreen extends StatelessWidget {
             mainAxisSize: MainAxisSize.max,
             children: [
               Text(
-                "Your balance is 500 USD",
+                "Your balance is ",
+                textAlign: TextAlign.start,
+                overflow: TextOverflow.clip,
+                style: TextStyle(
+                  fontWeight: FontWeight.w600,
+                  fontStyle: FontStyle.normal,
+                  fontSize: 25,
+                  color: Color(0xff000000),
+                ),
+              ),
+              Text(
+                "500 ",
+                textAlign: TextAlign.start,
+                overflow: TextOverflow.clip,
+                style: TextStyle(
+                  fontWeight: FontWeight.w600,
+                  fontStyle: FontStyle.normal,
+                  fontSize: 25,
+                  color: Color(0xff000000),
+                ),
+              ),
+              Text(
+                "USD",
                 textAlign: TextAlign.start,
                 overflow: TextOverflow.clip,
                 style: TextStyle(
@@ -99,7 +125,14 @@ class HomeScreen extends StatelessWidget {
                   children: [
                     IconButton(
                       icon: Icon(Icons.article),
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) =>
+                                  HomeScreen()), //to be replaced with TransactionList method
+                        );
+                      },
                       color: Color(0xff212435),
                       iconSize: 60,
                     ),
@@ -123,7 +156,14 @@ class HomeScreen extends StatelessWidget {
                   children: [
                     IconButton(
                       icon: Icon(Icons.favorite),
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) =>
+                                  HomeScreen()), //to be replaced with TransactionMake method
+                        );
+                      },
                       color: Color(0xff212435),
                       iconSize: 60,
                     ),
@@ -147,7 +187,14 @@ class HomeScreen extends StatelessWidget {
                   children: [
                     IconButton(
                       icon: Icon(Icons.attach_money),
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) =>
+                                  HomeScreen()), //to be replaced with PayBills method
+                        );
+                      },
                       color: Color(0xff212435),
                       iconSize: 60,
                     ),
@@ -171,7 +218,14 @@ class HomeScreen extends StatelessWidget {
                   children: [
                     IconButton(
                       icon: Icon(Icons.person),
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) =>
+                                  HomeScreen()), //to be replaced with AccountInfo method
+                        );
+                      },
                       color: Color(0xff212435),
                       iconSize: 60,
                     ),
