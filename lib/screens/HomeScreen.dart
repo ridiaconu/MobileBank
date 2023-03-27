@@ -7,24 +7,47 @@ import 'PayBills.dart';
 import 'TransactionList.dart';
 import 'TransactionMake.dart';
 
-FirebaseDatabase database = FirebaseDatabase.instance;
-DatabaseReference ref = database.ref('accoutns/accid1');
+final ref = FirebaseDatabase.instance.ref('accounts');
 
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends StatefulWidget {
+  @override
+  _HomeScreenState createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
+  String balance = 'Null';
+  String name = 'Null';
+  String accountcurrency = 'Null';
+
+  @override
+  void initState() {
+    super.initState();
+    ref.child('accid1/balance').onValue.listen((event) {
+      setState(() {
+        balance = event.snapshot.value.toString();
+      });
+    });
+    ref.child('accid1/AccountCurrency').onValue.listen((event) {
+      setState(() {
+        accountcurrency = event.snapshot.value.toString();
+      });
+    });
+    ref.child('accid1/Name').onValue.listen((event) {
+      setState(() {
+        name = event.snapshot.value.toString();
+      });
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Color(0xffffffff),
-      bottomNavigationBar: BottomNavigationBar(items: [
-        BottomNavigationBarItem(icon: Icon(Icons.home_filled), label: 'Home'),
-        BottomNavigationBarItem(
-            icon: Icon(Icons.account_circle_rounded), label: 'Account'),
-      ]),
       appBar: AppBar(
         elevation: 4,
-        centerTitle: false,
+        centerTitle: true,
         automaticallyImplyLeading: false,
-        backgroundColor: Color(0xff3a57e8),
+        backgroundColor: Color.fromARGB(255, 0, 42, 89),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.zero,
         ),
@@ -34,7 +57,7 @@ class HomeScreen extends StatelessWidget {
             fontWeight: FontWeight.w400,
             fontStyle: FontStyle.normal,
             fontSize: 14,
-            color: Color(0xff000000),
+            color: Color.fromARGB(255, 255, 253, 253),
           ),
         ),
       ),
@@ -50,6 +73,17 @@ class HomeScreen extends StatelessWidget {
             children: [
               Text(
                 "Hello ",
+                textAlign: TextAlign.start,
+                overflow: TextOverflow.clip,
+                style: TextStyle(
+                  fontWeight: FontWeight.w900,
+                  fontStyle: FontStyle.normal,
+                  fontSize: 35,
+                  color: Color(0xff000000),
+                ),
+              ),
+              Text(
+                name,
                 textAlign: TextAlign.start,
                 overflow: TextOverflow.clip,
                 style: TextStyle(
@@ -78,7 +112,7 @@ class HomeScreen extends StatelessWidget {
                 ),
               ),
               Text(
-                "500 ",
+                balance + " ",
                 textAlign: TextAlign.start,
                 overflow: TextOverflow.clip,
                 style: TextStyle(
@@ -89,7 +123,7 @@ class HomeScreen extends StatelessWidget {
                 ),
               ),
               Text(
-                "USD",
+                accountcurrency,
                 textAlign: TextAlign.start,
                 overflow: TextOverflow.clip,
                 style: TextStyle(

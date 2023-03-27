@@ -1,6 +1,8 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'HomeScreen.dart';
 import 'package:firebase_database/firebase_database.dart';
+import 'package:firebase_core/firebase_core.dart';
 
 FirebaseDatabase database = FirebaseDatabase.instance;
 DatabaseReference ref = database.ref();
@@ -19,7 +21,7 @@ class Login extends StatelessWidget {
             width: MediaQuery.of(context).size.width,
             height: MediaQuery.of(context).size.height * 0.35000000000000003,
             decoration: BoxDecoration(
-              color: Color(0xff3a57e8),
+              color: Color.fromARGB(255, 0, 42, 89),
               shape: BoxShape.rectangle,
               borderRadius: BorderRadius.zero,
               border: Border.all(color: Color(0x4d9e9e9e), width: 1),
@@ -165,7 +167,7 @@ class Login extends StatelessWidget {
                                 builder: (context) => HomeScreen()),
                           );
                         },
-                        color: Color(0xff3a57e8),
+                        color: Color.fromARGB(255, 0, 42, 89),
                         elevation: 0,
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(16.0),
