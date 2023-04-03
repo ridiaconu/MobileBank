@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_database/ui/firebase_animated_list.dart';
 import 'package:firebase_database/ui/firebase_list.dart';
 import 'package:flutter/material.dart';
@@ -60,6 +61,21 @@ class _HomeScreenState extends State<HomeScreen> {
             color: Color.fromARGB(255, 255, 253, 253),
           ),
         ),
+        actions: [
+          PopupMenuButton(
+            itemBuilder: (context) => [
+              PopupMenuItem(
+                child: Text('Logout'),
+                value: 'logout',
+              ),
+            ],
+            onSelected: (value) {
+              if (value == 'logout') {
+                FirebaseAuth.instance.signOut();
+              }
+            },
+          ),
+        ],
       ),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.start,

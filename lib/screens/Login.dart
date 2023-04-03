@@ -6,6 +6,8 @@ import 'package:firebase_core/firebase_core.dart';
 
 FirebaseDatabase database = FirebaseDatabase.instance;
 DatabaseReference ref = database.ref();
+final emailController = TextEditingController();
+final passwordController = TextEditingController();
 
 class Login extends StatelessWidget {
   @override
@@ -48,8 +50,7 @@ class Login extends StatelessWidget {
                   children: [
                     ///***If you have exported images you must have to copy those images in assets/images directory.
                     Image(
-                      image: NetworkImage(
-                          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRoSL4WHG5Ypv4e4W58d5Gt4PnBEM_kZQDDhAKjZAOYLBy6V1karPn2SMil6DFkjUUeX7M&usqp=CAU"),
+                      image: AssetImage("lib/assets/login_pic.png"),
                       height: 100,
                       width: 100,
                       fit: BoxFit.cover,
@@ -75,7 +76,7 @@ class Login extends StatelessWidget {
                       padding:
                           EdgeInsets.symmetric(vertical: 16, horizontal: 0),
                       child: TextField(
-                        controller: TextEditingController(),
+                        controller: emailController,
                         obscureText: false,
                         textAlign: TextAlign.left,
                         maxLines: 1,
@@ -101,7 +102,7 @@ class Login extends StatelessWidget {
                             borderSide:
                                 BorderSide(color: Color(0xff000000), width: 1),
                           ),
-                          hintText: "Enter Username",
+                          hintText: "Enter E-mail Address",
                           hintStyle: TextStyle(
                             fontWeight: FontWeight.w400,
                             fontStyle: FontStyle.normal,
@@ -116,7 +117,7 @@ class Login extends StatelessWidget {
                       ),
                     ),
                     TextField(
-                      controller: TextEditingController(),
+                      controller: passwordController,
                       obscureText: true,
                       enableSuggestions: false,
                       autocorrect: false,
@@ -161,11 +162,14 @@ class Login extends StatelessWidget {
                       padding: EdgeInsets.fromLTRB(0, 30, 0, 0),
                       child: MaterialButton(
                         onPressed: () {
+                          /*
                           Navigator.push(
                             context,
                             MaterialPageRoute(
                                 builder: (context) => HomeScreen()),
                           );
+                          */
+                          LoginVal();
                         },
                         color: Color.fromARGB(255, 0, 42, 89),
                         elevation: 0,
@@ -194,5 +198,14 @@ class Login extends StatelessWidget {
         ],
       ),
     );
+  }
+}
+
+Future LoginVal() async {
+  try {
+    await FirebaseAuth.instance.signInWithEmailAndPassword(
+        email: emailController.text, password: passwordController.text);
+  } on FirebaseAuthException catch (e) {
+    print(e);
   }
 }
