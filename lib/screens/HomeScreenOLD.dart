@@ -8,7 +8,8 @@ import 'PayBills.dart';
 import 'TransactionList.dart';
 import 'TransactionMake.dart';
 
-final ref = FirebaseDatabase.instance.ref('accounts');
+final ref = FirebaseDatabase.instance.ref();
+final userName = FirebaseAuth.instance.currentUser?.email.toString();
 
 class HomeScreen extends StatefulWidget {
   @override
@@ -23,17 +24,18 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   void initState() {
     super.initState();
-    ref.child('accid1/balance').onValue.listen((event) {
+
+    ref.child('accounts/' + '/balance').onValue.listen((event) {
       setState(() {
         balance = event.snapshot.value.toString();
       });
     });
-    ref.child('accid1/AccountCurrency').onValue.listen((event) {
+    ref.child('accounts/accid2/AccountCurrency').onValue.listen((event) {
       setState(() {
         accountcurrency = event.snapshot.value.toString();
       });
     });
-    ref.child('accid1/Name').onValue.listen((event) {
+    ref.child('accounts/accid2/Name').onValue.listen((event) {
       setState(() {
         name = event.snapshot.value.toString();
       });
@@ -174,13 +176,13 @@ class _HomeScreenState extends State<HomeScreen> {
                   mainAxisSize: MainAxisSize.max,
                   children: [
                     IconButton(
-                      icon: Icon(Icons.arrow_back),
+                      icon: Icon(Icons.article),
                       onPressed: () {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
                               builder: (context) =>
-                                  TransactionList()), //to be replaced with TransactionList method
+                                  HomeScreen()), //to be replaced with TransactionList method
                         );
                       },
                       color: Color(0xff212435),
@@ -211,7 +213,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           context,
                           MaterialPageRoute(
                               builder: (context) =>
-                                  TransactionMake()), //to be replaced with TransactionMake method
+                                  HomeScreen()), //to be replaced with TransactionMake method
                         );
                       },
                       color: Color(0xff212435),
@@ -242,7 +244,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           context,
                           MaterialPageRoute(
                               builder: (context) =>
-                                  PayBills()), //to be replaced with PayBills method
+                                  HomeScreen()), //to be replaced with PayBills method
                         );
                       },
                       color: Color(0xff212435),
@@ -273,7 +275,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           context,
                           MaterialPageRoute(
                               builder: (context) =>
-                                  AccountInfo()), //to be replaced with AccountInfo method
+                                  HomeScreen()), //to be replaced with AccountInfo method
                         );
                       },
                       color: Color(0xff212435),

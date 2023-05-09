@@ -1,5 +1,3 @@
-import 'dart:html';
-
 import 'package:bankapp/screens/HomeScreen.dart';
 import 'package:bankapp/screens/Login.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -33,12 +31,10 @@ class MyApp extends StatelessWidget {
           stream: FirebaseAuth.instance.authStateChanges(),
           builder: (context, snapshot) {
             if (snapshot.hasError) {
-              /*
               const snackbar = SnackBar(
                 content: Text('Cannot open url'),
               );
               ScaffoldMessenger.of(context).showSnackBar(snackbar);
-              */
             }
 
             if (snapshot.hasData) {
